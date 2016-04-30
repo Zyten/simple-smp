@@ -54,19 +54,19 @@ $senarai_kursus=mysqli_query ($conn,$sql);
         NProgress.start();
     </script>
 	<script type="text/javascript">
-        function delete_id(id, id_sesi)
+        function delete_id(id, id_sesi, no_matrik)
         {
             if(confirm('Padam maklumat pelajar?'))
             {
-                window.location='padampelajar.php?delete_id='+id+'&id_sesi='+id_sesi
+                window.location='padampelajar.php?delete_id='+id+'&id_sesi='+id_sesi+'&no_matrik='+no_matrik;
             }
         }
         function update_id(id, nama_penuh, no_matrik, no_kp, id_kursus, id_sesi)
         {
-            if(confirm('Kemaskini maklumat pelajar?'))
-            {
-                window.location='kemaskinipelajar.php?id='+id+'&nama_penuh='+nama_penuh+'&no_matrik='+no_matrik+'&no_kp='+no_kp+'&id_kursus='+id_kursus+'&id_sesi='+id_sesi
-            }
+            //if(confirm('Kemaskini maklumat pelajar?'))
+            //{
+                window.location='kemaskinipelajar.php?id='+id+'&nama_penuh='+nama_penuh+'&no_matrik='+no_matrik+'&no_kp='+no_kp+'&id_kursus='+id_kursus+'&id_sesi='+id_sesi;
+            //}
         }
 	</script>
 
@@ -210,7 +210,7 @@ $senarai_kursus=mysqli_query ($conn,$sql);
 										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="no_kp">No. Kad Pengenalan <span class="required">*</span>
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input required type="text" pattern="\d*" maxlength="12" placeholder="cth. 951216085565" id="no_kp" name="no_kp" class="form-control col-md-7 col-xs-12">
+											<input required type="text" pattern="numeric" maxlength="12" placeholder="cth. 951216085565" id="no_kp" name="no_kp" class="form-control col-md-7 col-xs-12">
 										</div>
 									</div>
 									<div class="item form-group">
@@ -232,6 +232,15 @@ $senarai_kursus=mysqli_query ($conn,$sql);
 										</div>
 									</div>
 
+									<!-- Display errors in update_errors stack if any and unset once done -->
+										<?php if (isset($_SESSION['addnewp_errors'])): ?>
+										<div class="form-errors">
+											<?php foreach($_SESSION['addnewp_errors'] as $error): ?>
+												<p><?php echo $error; ?></p>
+											<?php endforeach; ?>
+										</div>
+										<?php unset($_SESSION['addnewp_errors']); endif;?>
+									
 									<div class="ln_solid"></div>
 									<div class="form-group">
 										<div class="col-md-6 col-md-offset-3">
@@ -277,7 +286,7 @@ $senarai_kursus=mysqli_query ($conn,$sql);
                                 <div class="x_content">
                                     <table id="myTable" style="max-width:none;table-layout:fixed; word-wrap: break-word;" class="table table-striped responsive-utilities jambo_table bulk_action">
                                         <thead>
-                                            <tr class="headings">
+                                            <tr class="headings" style="text-align:center;">
                                                 <th class="column-title">#</th>
                                                 <th class="column-title">Nama Penuh </th>
                                                 <th class="column-title">No. Kad Pelajar </th>
@@ -299,8 +308,8 @@ $senarai_kursus=mysqli_query ($conn,$sql);
                                                 <td class=' '><?php echo $row['no_matrik']; ?></td>
                                                 <td class=' '><?php echo $row['no_kp']; ?></td>
                                                 <td class=' '><?php echo $row['nama_kursus']; ?></td>
-                                                <td class=' last'><a href='javascript:update_id(<?php echo $row['id']; ?>,"<?php echo $row['nama_penuh']; ?>",<?php echo $row['no_matrik']; ?>,<?php echo $row['no_kp']; ?>,<?php echo $row['id_kursus']; ?>,<?php echo $id_sesi; ?>)'><input class='btn btn-link btn-xs' type='submit' name='tambah' value='Kemaskini' style='color:red; margin-top:-3%'/></a>
-                                                <td class=' last'><a href='javascript:delete_id(<?php echo $row['id']; ?>,<?php echo $id_sesi; ?>)'><input class='btn btn-link btn-xs' type='submit' name='tambah' value='Padam' style='color:red; margin-top:-3%'/></a></td>
+                                                <td class=' last'><a href='javascript:update_id(<?php echo $row['id']; ?>,"<?php echo $row['nama_penuh']; ?>","<?php echo $row['no_matrik']; ?>",<?php echo $row['no_kp']; ?>,<?php echo $row['id_kursus']; ?>,<?php echo $id_sesi; ?>)'><input class='btn btn-link btn-xs' type='submit' name='tambah' value='Kemaskini' style='color:green; margin-top:-3%'/></a>
+                                                <td class=' last'><a href='javascript:delete_id(<?php echo $row['id']; ?>,<?php echo $id_sesi; ?>,"<?php echo $row['no_matrik']; ?>")'><input class='btn btn-link btn-xs' type='submit' name='tambah' value='Padam' style='color:red; margin-top:-3%'/></a></td>
                                             </tr>
                                             <?php
                                             $temp++;

@@ -5,11 +5,15 @@ $table = "jpelajar";
 
 $id=$_REQUEST['delete_id'];
 $id_sesi=$_REQUEST['id_sesi'];
+$no_matrik=$_REQUEST['no_matrik'];
 
 $query = "DELETE FROM jpelajar WHERE id = $id";
 $result = mysqli_query($conn,$query) or die ('Error updating database');
 
 if ($result){
+	$filename = '../img/pelajar/'.$no_matrik.'.jpg';
+	if (file_exists($filename)) {
+		unlink($filename);}
     ?>
     <script>
         alert('Maklumat Pelajar Telah Dipadam.')

@@ -21,7 +21,7 @@
 				$_SESSION['addnew_errors'] = array("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ralat. Kata Laluan tidak sama.");
 
 			else{
-				$newKataLaluan = md5($myKataLaluan); //This will make your password encrypted into md5, a high security hash
+				$newKataLaluan = password_hash($myKataLaluan, PASSWORD_DEFAULT);
                 
 				//Query insert new pentadbir into table pentadbir
 				$sql = mysqli_query( $conn, "INSERT INTO jpentadbir(no_staf, nama_penuh, no_kp, kata_laluan) VALUES ('$myNoStaf','$myNamaPenuh', '$myNoKP', '$newKataLaluan')" )

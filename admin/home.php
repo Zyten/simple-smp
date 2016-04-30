@@ -7,29 +7,6 @@
 	}
 ?>
 
-<?php 
-	//Query calon
-	$result = mysqli_query($conn, "SELECT jc.id, jp.nama_penuh FROM jcalon jc, jpelajar jp WHERE jc.id_pelajar=jp.id")
-	or die(" Tiada calon ditemui\n"); 
-	//Query pelajar
-	$result_pelajar = mysqli_query($conn, "SELECT jp.id FROM jpelajar jp")
-	or die(" Tiada pelajar ditemui\n"); 
-	//Query jumlah pelajar sudah undi
-	$result_sudah_undi = mysqli_query($conn, "SELECT jp.id FROM jpelajar jp WHERE jp.status_undi=1")
-	or die(" Tiada pengundi ditemui\n");
-	//Query jumlah undi bagi semua calon
-	$result_jum_undi = mysqli_query($conn, "SELECT SUM(jc.jumlah_undi) as total FROM jcalon jc")
-	or die(" Tiada undi ditemui\n");
-
-	$_SESSION['jum_calon'] = mysqli_num_rows($result);
-	$_SESSION['jum_pelajar'] = mysqli_num_rows($result_pelajar);
-	$_SESSION['jum_sudah_undi'] = mysqli_num_rows($result_sudah_undi);
-	 
-	$j_undi = mysqli_fetch_assoc($result_jum_undi);
-	$_SESSION['jum_undi'] = $j_undi['total'];
-	 
-	$_SESSION['peratus_undi'] = $_SESSION['jum_sudah_undi']/$_SESSION['jum_pelajar']*100;
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -6,6 +6,8 @@
 		echo "<script>alert('Anda belum log keluar.'); window.location.href= 'home.php';</script>";
 		
 	}
+	$passsword = "user";
+	$hashedPassword = password_hash($passsword, PASSWORD_DEFAULT);
 ?>
 <!DOCTYPE html>
 <html lang="en">

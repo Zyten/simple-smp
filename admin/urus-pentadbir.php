@@ -131,7 +131,7 @@
                                             <label class="control-label col-md-4 col-sm-3 col-xs-12">ID Staf</label>
                                             <div class="col-md-6 col-sm-9 col-xs-12">
 												<input name="id" type="hidden" class="form-control" value="<?php echo $_SESSION['id_pentadbir_smp']?>">
-                                                <input type="text" class="form-control" value="<?php echo $_SESSION['no_staf']?>" readonly="readonly">
+                                                <input type="text" class="form-control" value="<?php echo $_SESSION['no_staf_smp']?>" readonly="readonly">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -191,7 +191,7 @@
 										<div class="form-group">
                                             <label class="control-label col-md-4 col-sm-3 col-xs-12">ID Staf</label>
                                             <div class="col-md-6 col-sm-9 col-xs-12">
-                                                <input required type="text" name="no_staf" class="form-control" placeholder="">
+                                                <input type="text" name="no_staf" class="form-control" required placeholder="" maxlength="5" pattern="(?=.*\d).{5}">
                                             </div>
                                         </div>
                                         <div class="form-group">

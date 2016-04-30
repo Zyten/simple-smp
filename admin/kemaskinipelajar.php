@@ -3,7 +3,7 @@
 include("db/dbc.php");
 session_start();
 //If your session isn't valid, it returns you to the login screen for protection
-if(empty($_SESSION['id_pentadbir'])){
+if(empty($_SESSION['id_pentadbir_smp'])){
     header("location:access-denied.php");
 }
 if(!isset($_SESSION['search_found']))
@@ -15,6 +15,15 @@ $no_matrik=$_REQUEST['no_matrik'];
 $no_kp=$_REQUEST['no_kp'];
 $id_kursus=$_REQUEST['id_kursus'];
 $id_sesi=$_REQUEST['id_sesi'];
+
+$filename = '../img/pelajar/'.$no_matrik.'.jpg';
+
+if (file_exists($filename)) {
+	$defaultimg = $no_matrik;
+}
+else{
+	$defaultimg = "default_avatar_male";
+}
 
 $sql = "SELECT id, nama_penuh, singkatan FROM jkursus;";
 $senarai_kursus=mysqli_query ($conn,$sql);
@@ -29,7 +38,7 @@ $senarai_kursus=mysqli_query ($conn,$sql);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Sistem Pencalonan MPP UTHM</title>
+    <title>Sistem Maklumat Pelajar UTHM</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -116,13 +125,7 @@ $senarai_kursus=mysqli_query ($conn,$sql);
                                 <a  href="urus-batch.php"><i class="fa fa-user"></i> Urus Pelajar</span></a>
                             </li>
                             <li>
-                                <a  href="urus-calon.php"><i class="fa fa-user"></i> Urus Calon</span></a>
-                            </li>
-                            <li>
                                 <a  href="urus-pentadbir.php"><i class="fa fa-user-md"></i> Urus Pentadbir</a>
-                            </li>
-                            <li>
-                                <a  href="keputusan.php"><i class="fa fa-list"></i> Keputusan</a>
                             </li>
                         </ul>
                     </div>
@@ -177,7 +180,7 @@ $senarai_kursus=mysqli_query ($conn,$sql);
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nama Penuh <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="id_sesi" class="form-control col-md-7 col-xs-12" name="id" type="hidden" value="<?php echo $id; ?>">
+                                            <input id="id" class="form-control col-md-7 col-xs-12" name="id" type="hidden" value="<?php echo $id; ?>">
                                             <input id="id_sesi" class="form-control col-md-7 col-xs-12" name="id_sesi" type="hidden" value="<?php echo $id_sesi; ?>">
                                             <input id="nama_penuh" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" value="<?php echo $nama_penuh; ?>" data-validate-words="2" name="nama_penuh" required="required" type="text">
                                         </div>
@@ -186,14 +189,14 @@ $senarai_kursus=mysqli_query ($conn,$sql);
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">No. Kad Pengenalan <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="email" id="no_kp" name="no_kp" required="required" class="form-control col-md-7 col-xs-12"  value="<?php echo $no_kp; ?>">
+                                            <input type="email" id="no_kp" name="no_kp" required="required" class="form-control col-md-7 col-xs-12" pattern="\d*" maxlength="12" value="<?php echo $no_kp; ?>">
                                         </div>
                                     </div>
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">No. Kad Pelajar <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="email" id="no_matrik" name="no_matrik" data-validate-linked="email" required="required"  value="<?php echo $no_matrik; ?>" class="form-control col-md-7 col-xs-12">
+                                            <input type="email" id="no_matrik" name="no_matrik" data-validate-linked="email" required="required" maxlength="8" value="<?php echo $no_matrik; ?>" class="form-control col-md-7 col-xs-12">
                                         </div>
                                     </div>
                                     <div class="item form-group">
@@ -201,9 +204,12 @@ $senarai_kursus=mysqli_query ($conn,$sql);
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
 											<select id="id_kursus" name="id_kursus" class="form-control col-md-7 col-xs-12"> 
-											<?php while ($row = mysqli_fetch_assoc($senarai_kursus)) { ?>
-												<option value=<?php $row['id']?>><?php echo $row['singkatan']?></option>
-											<?php } ?>
+											<?php while ($row = mysqli_fetch_assoc($senarai_kursus)) { 
+											if($row['id']==$id_kursus)
+												echo "<option selected='' value=".$row['id'].">".$row['singkatan']."</option>";
+											else
+												echo "<option value=".$row['id'].">".$row['singkatan']."</option>";
+											 } ?>
 											</select>
                                         </div>
                                     </div>
@@ -211,7 +217,7 @@ $senarai_kursus=mysqli_query ($conn,$sql);
                                     <div class="ln_solid"></div>
                                     <div class="form-group">
                                         <div class="col-md-6 col-md-offset-3">
-                                            <button style="margin-top:2%" type="submit" class="btn btn-success">Tambah</button>
+                                            <button style="margin-top:2%" type="submit" class="btn btn-success">Kemaskini</button>
                                         </div>
                                     </div>
 
@@ -240,7 +246,7 @@ $senarai_kursus=mysqli_query ($conn,$sql);
             <footer>
                 <div class="">
                     <p class="pull-right"> Hakcipta Terpelihara © 2016 |
-                        <span class="lead"> <i class="fa fa-paw"></i> <a href="http://www.ilpledang.gov.my/v5/index.php/en/">ILP LEDANG</a></span>
+                        <span class="lead"> <i class="fa fa-paw"></i> <a href="http://www.uthm.edu.my/v2/">UTHM</a></span>
                     </p>
                 </div>
                 <div class="clearfix"></div>
@@ -271,7 +277,7 @@ $senarai_kursus=mysqli_query ($conn,$sql);
         removeTitle: 'Cancel or reset changes',
         elErrorContainer: '#kv-avatar-errors',
         msgErrorClass: 'alert alert-block alert-danger',
-        defaultPreviewContent: '<img src="img/default_avatar_male.jpg" alt="Your Avatar" style="width:160px">',
+        defaultPreviewContent: '<img src="../img/pelajar/<?php echo $defaultimg ?>.jpg?t=1" alt="Your Avatar" style="width:160px">',
         layoutTemplates: {main2: '{preview} ' + ' {remove} {browse}'},
         allowedFileExtensions: ["jpg", "png", "gif"]
     });

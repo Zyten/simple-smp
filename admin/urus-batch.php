@@ -62,10 +62,10 @@ $_SESSION['jum_calon'] = mysqli_num_rows($result);
         }
         function edit_id(id)
         {
-            if(confirm('Urus Pelajar'))
-            {
+            //if(confirm('Urus Pelajar'))
+            //{
                 window.location='urus-pelajar.php?id_sesi='+id
-            }
+            //}
         }
     </script>
     <!-- some CSS styling changes and overrides -->
@@ -193,9 +193,9 @@ $_SESSION['jum_calon'] = mysqli_num_rows($result);
                                         </tr>
                                         <tr>
                                             <td colspan="3" align="right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="Simpan" class="btn btn-success" value="Tambah" />
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" name="Simpan" class="btn btn-primary" value="Tambah" />
                                                 <label>
-                                                    <input class="btn btn-warning" type="reset" name="reset" value="Padam" />
+                                                    <input class="btn btn-danger" type="reset" name="reset" value="Padam" />
                                                 </label></td>
                                         </tr>
                                     </table>
