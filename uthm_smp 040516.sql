@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2016 at 01:31 AM
+-- Generation Time: May 04, 2016 at 02:46 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -61,14 +61,14 @@ CREATE TABLE IF NOT EXISTS `jpelajar` (
   `id_kursus` int(5) NOT NULL,
   `id_sesi` int(11) NOT NULL,
   `status_undi` int(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jpelajar`
 --
 
 INSERT INTO `jpelajar` (`id`, `nama_penuh`, `no_kp`, `no_matrik`, `kata_laluan`, `id_kursus`, `id_sesi`, `status_undi`) VALUES
-(1, 'Ruban A/L Selvarajah', '951216085565', 'AI130243', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 1, 1, 1),
+(1, 'Ruban Selvarajah', '951216085565', 'AI130243', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 1, 1, 1),
 (2, 'Naveen A/L Ganasan', '931213105565', 'AI130101', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 2, 2, 0),
 (3, 'Ahmad Fairul B. Onn ', '930215085565', 'AI130102', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 3, 1, 0),
 (4, 'Ko Wye Sean', '930312035565', 'AI130103', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 1, 1, 0),
@@ -80,14 +80,13 @@ INSERT INTO `jpelajar` (`id`, `nama_penuh`, `no_kp`, `no_matrik`, `kata_laluan`,
 (10, 'Chew Yui Shen', '931210058989', 'AI130110', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 2, 1, 0),
 (11, 'Chai Chee Yike', '931012085654', 'AI130111', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 3, 1, 0),
 (12, 'Mohd. Munir B. Nasir', '930215081212', 'AI130112', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 1, 1, 0),
-(13, 'Kasturi A/P Ravichandran', '930825082525', 'AI130113', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 1, 1, 0),
 (14, 'Nanthiine Nair A/P Ravi', '930425085623', 'AI130114', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 2, 1, 0),
-(15, 'Ju Jing Yi', '940623085707', 'AI130115', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 3, 1, 0),
+(15, 'Ju Jing Yi', '940623085707', 'AI130115', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 3, 1, 1),
 (16, 'Muniandy A/L Perimal', '930410085656', 'AI130116', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 4, 1, 0),
 (17, 'Siti Sarah Bt. Yunos', '920303061234', 'AI130117', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 4, 1, 0),
-(18, 'Kesavan A/L Kannan', '930109035232', 'AI130118', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 1, 1, 0),
-(19, 'Ron Jakri Jikim', '940203051234', 'AI130119', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 2, 1, 0),
-(20, 'Chan Shin Yee', '930403085659', 'AI130120', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 3, 1, 0);
+(18, 'Kesavan A/L Kannan', '930109035232', 'AI130118', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 1, 1, 1),
+(19, 'Ron Jakri Jikim', '940203051234', 'AI130119', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 2, 1, 1),
+(20, 'Chan Shin Yee', '930403085659', 'AI130120', '$2y$10$k7OsIwUSEvq72d/BVoke9eVsk3JEez530lSLQ3MF7nLDh55Eu9riu', 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -120,7 +119,7 @@ INSERT INTO `jpentadbir` (`id`, `no_staf`, `nama_penuh`, `no_kp`, `kata_laluan`)
 CREATE TABLE IF NOT EXISTS `jsesi` (
   `id` int(11) NOT NULL,
   `nama` varchar(9) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jsesi`
@@ -174,7 +173,7 @@ ALTER TABLE `jsesi`
 -- AUTO_INCREMENT for table `jpelajar`
 --
 ALTER TABLE `jpelajar`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `jpentadbir`
 --
@@ -184,7 +183,7 @@ ALTER TABLE `jpentadbir`
 -- AUTO_INCREMENT for table `jsesi`
 --
 ALTER TABLE `jsesi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
