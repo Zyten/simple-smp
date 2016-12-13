@@ -5,7 +5,7 @@
 
 Complimentary micro-system to support UTHM Student Council Voting System -- [simple-mpp-election](http://github.com/Zyten/simple-mpp-election "simple-mpp-election by Zyten")
 
-Project is hosted at: #
+Project is hosted at: http://www.seanko.com/
 
 ### Requirements
 
